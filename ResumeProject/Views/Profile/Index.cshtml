@@ -1,0 +1,44 @@
+﻿@using ResumeProject.Models
+@model List<TblProfile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h2>Profile List</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Profil Başlığı</th>
+        <th>Adı</th>
+        <th>Mail</th>
+        <th>Telefon Numarası</th>
+        <th>Sosyal Medya 1</th>
+        <th>Sosyal Medya 2</th>
+        <th>Sosyal Medya 3</th>
+        <th>Sosyal Medya 4</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ProfileTitle</td>
+            <td>@item.Name</td>
+            <td>@item.Mail</td>
+            <td>@item.Phone</td>
+            <td>@item.SocialMedia1</td>
+            <td>@item.SocialMedia2</td>
+            <td>@item.SocialMedia3</td>
+            <td>@item.SocialMedia4</td>
+            <td><a href="/Profile/DeleteProfile/@item.ProfileID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Profile/UpdateProfile/@item.ProfileID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Profile/AddProfile/" class="btn btn-outline-primary">Yeni Profil Yarat</a>
